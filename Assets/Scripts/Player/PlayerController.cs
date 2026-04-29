@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IPlayerContext
 {
-    // Bağımlılıkları arayüz üzerinden sağlıyoruz
     public PlayerMovement Movement { get; private set; }
     public PlayerCombat Combat { get; private set; }
     public IInputProvider Input { get; private set; }
@@ -24,17 +23,14 @@ public class PlayerController : MonoBehaviour, IPlayerContext
 
     private void Start()
     {
-        // Başlangıç state'ini atıyoruz
         StateMachine.ChangeState(new IdleState(this));
     }
 
     private void Update()
     {
-        // State Machine sürekli çalışarak o anki state'in Tick metodunu çağırır
         StateMachine.Tick();
     }
 
-    // Dışarıdan sağlık sistemi tetiklediğinde çağrılır
     public void Die()
     {
         StateMachine.ChangeState(new DeadState(this));
