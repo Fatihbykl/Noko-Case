@@ -33,8 +33,24 @@ public class EnemyController : MonoBehaviour, IEnemyContext
 
     public void TakeDamage(int damage, Transform attacker)
     {
+        AlertCheck(attacker);
+        DecreaseHealth(damage);
+    }
+
+    private void DecreaseHealth(int damage)
+    {
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            StateMachine.ChangeState(new EnemyDeadState(this));
+        }
+    }
+
+    private void AlertCheck(Transform attacker)
+    {
         PlayerTarget = attacker;
         
+        if(StateMachine.CurrentState is not EnemyPatrolState) return;
         if (!stats.canAttack)
         {
             StateMachine.ChangeState(new EnemyFleeState(this));

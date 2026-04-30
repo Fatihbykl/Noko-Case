@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class MoveState : PlayerBaseState
 {
-    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
-    
     public MoveState(IPlayerContext context) : base(context) { }
 
     public override void Enter()
     {
-        Ctx.Animator.SetBool(IsMoving, true);
+        Ctx.Animator.SetBool(AnimHashes.IsMoving, true);
     }
 
     public override void Tick()
@@ -23,7 +21,7 @@ public class MoveState : PlayerBaseState
         if (Ctx.Input.MovementInput.sqrMagnitude <= 0.1f)
         {
             Ctx.StateMachine.ChangeState(new IdleState(Ctx));
-            Ctx.Animator.SetBool(IsMoving, false);
+            Ctx.Animator.SetBool(AnimHashes.IsMoving, false);
             return;
         }
         

@@ -31,10 +31,12 @@ public class EnemyFleeState : EnemyBaseState
     {
         Ctx.Agent.isStopped = false;
         Ctx.Agent.speed = Ctx.Stats.fleeSpeed;
+        Ctx.Animator.SetBool(AnimHashes.IsMoving, true);
     }
 
     public override void Exit()
     {
         Ctx.Agent.isStopped = true;
+        Ctx.Animator.SetBool(AnimHashes.IsMoving, false);
     }
 }

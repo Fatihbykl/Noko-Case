@@ -4,11 +4,12 @@ public class EnemyChaseState : EnemyBaseState
 {
     public EnemyChaseState(IEnemyContext ctx) : base(ctx) { }
     
-    private float _recalculateTimer = 0f;
+    private float _recalculateTimer;
     
     public override void Enter() { 
         Ctx.Agent.isStopped = false;
-        Ctx.Agent.speed = Ctx.Stats.chaseSpeed; 
+        Ctx.Agent.speed = Ctx.Stats.chaseSpeed;
+        Ctx.Animator.SetBool(AnimHashes.IsMoving, true);
     }
 
     public override void Tick()
@@ -36,5 +37,6 @@ public class EnemyChaseState : EnemyBaseState
     public override void Exit()
     {
         Ctx.Agent.isStopped = true;
+        Ctx.Animator.SetBool(AnimHashes.IsMoving, false);
     }
 }

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour, IPlayerContext
     {
         StateMachine.Tick();
     }
+    
 
     public void Die()
     {

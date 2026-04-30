@@ -11,6 +11,8 @@ public class EnemyPatrolState : EnemyBaseState
     {
         Ctx.Agent.isStopped = false;
         Ctx.Agent.speed = Ctx.Stats.patrolSpeed;
+        Ctx.Animator.SetBool(AnimHashes.IsMoving, true);
+        
         SetNewDestination();
     }
 
@@ -36,5 +38,6 @@ public class EnemyPatrolState : EnemyBaseState
     public override void Exit()
     {
         Ctx.Agent.isStopped = true;
+        Ctx.Animator.SetBool(AnimHashes.IsMoving, false);
     }
 }
