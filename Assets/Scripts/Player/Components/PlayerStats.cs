@@ -1,37 +1,62 @@
+using System.Collections.Generic;
 using Systems.Combat;
+using Systems.Stats;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+namespace Player.Components
 {
-    [Header("Core Stats")]
-    public CharacterStat MaxHealth;
-    public CharacterStat Damage;
-    public CharacterStat Armor;
-    public CharacterStat MoveSpeed;
-
-    private HealthSystem _healthSystem;
-
-    private void Awake()
+    public class PlayerStats : MonoBehaviour
     {
-        _healthSystem = GetComponent<HealthSystem>();
-    }
+        [Header("Core Stats")]
+        [SerializeField] private CharacterStat maxHealth;
+        [SerializeField] private CharacterStat damage;
+        [SerializeField] private CharacterStat attackSpeed;
+        [SerializeField] private CharacterStat moveSpeed;
 
-    private void Start()
-    {
-        // Sağlık sistemine final can değerimizi veriyoruz
-        _healthSystem.Initialize(MaxHealth.GetValue());
-    }
+        public CharacterStat MaxHealth => maxHealth;
+        public CharacterStat Damage => damage;
+        public CharacterStat AttackSpeed => attackSpeed;
+        public CharacterStat MoveSpeed => moveSpeed;
 
-    // Oyun içinden bir "Can Yükseltme" (Upgrade) yeteneği alındığında çağrılır
-    public void UpgradeMaxHealth(float bonusAmount)
-    {
-        // Kalıcı upgrade ise BaseValue'yu artırabilirsin
-        MaxHealth.BaseValue += bonusAmount;
-        
-        // Veya bir yüzük takıldıysa AddModifier kullanırsın
-        // MaxHealth.AddModifier(bonusAmount);
-        
-        // Sağlık sistemini yeni max canla güncelle
-        _healthSystem.Initialize(MaxHealth.GetValue()); 
+        private HealthSystem _healthSystem;
+    
+        private Dictionary<StatType, CharacterStat> _statDictionary;
+
+        private void Awake()
+        {
+            _healthSystem = GetComponent<HealthSystem>();
+
+            _statDictionary = new Dictionary<StatType, CharacterStat>
+            {
+                { StatType.MaxHealth, maxHealth },
+                { StatType.Damage, damage },
+                { StatType.Armor, attackSpeed },
+                { StatType.MoveSpeed, moveSpeed }
+            };
+        }
+
+        private void Start()
+        {
+            _healthSystem.Initialize(maxHealth.GetValue());
+        }
+
+        public void UpgradeStat(StatType statType, float amount)
+        {
+            if (_statDictionary.TryGetValue(statType, out CharacterStat statToUpgrade))
+            {
+                statToUpgrade.BaseValue += amount;
+
+                if (statType == StatType.MaxHealth)
+                {
+                    _healthSystem.Initialize(maxHealth.GetValue());
+                }
+
+                Debug.Log($"{statType} yükseltildi! Yeni taban değer: {statToUpgrade.BaseValue}");
+            }
+            else
+            {
+                Debug.LogWarning($"Stat tipi bulunamadı: {statType}");
+            }
+        }
     }
 }
