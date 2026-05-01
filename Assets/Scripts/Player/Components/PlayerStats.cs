@@ -32,7 +32,7 @@ namespace Player.Components
             {
                 { StatType.MaxHealth, maxHealth },
                 { StatType.Damage, damage },
-                { StatType.Armor, attackSpeed },
+                { StatType.AttackSpeed, attackSpeed },
                 { StatType.MoveSpeed, moveSpeed }
             };
         }

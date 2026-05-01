@@ -11,6 +11,8 @@ namespace Systems.Combat
 
         private float _currentHealth;
         private float _maxHealth;
+        
+        public float MaxHealth => _maxHealth;
 
         public void Initialize(float maxHealth)
         {

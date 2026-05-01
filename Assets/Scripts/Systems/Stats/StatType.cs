@@ -4,7 +4,7 @@ namespace Systems.Stats
     {
         MaxHealth,
         Damage,
-        Armor,
+        AttackSpeed,
         MoveSpeed
     }
 }
