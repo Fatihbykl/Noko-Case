@@ -1,3 +1,5 @@
+using System;
+using Player.Core;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Serialization;
@@ -8,7 +10,7 @@ namespace Player.Components
     public class PlayerCombat : MonoBehaviour
     {
         [SerializeField] private LayerMask enemyLayer;
-        [SerializeField] private float attackCooldown = 2f;
+        [SerializeField] private GameObject rangeSprite;
         
         [Header("VFX Settings")] 
         [SerializeField] private SpellVFX spellPrefab;
@@ -17,11 +19,13 @@ namespace Player.Components
         private float _nextAttackTime;
         private Collider[] _hitColliders = new Collider[20];
         private PlayerStats _playerStats;
+        private PlayerController _player;
         private ObjectPool<SpellVFX> _vfxPool;
 
         private void Start()
         {
             _playerStats = GetComponent<PlayerStats>();
+            _player = GetComponent<PlayerController>();
             _vfxPool = new ObjectPool<SpellVFX>(
                 createFunc: () =>
                 {
@@ -35,14 +39,44 @@ namespace Player.Components
                 defaultCapacity: 10,
                 maxSize: 20
             );
+
+            var radius = _playerStats.AttackRadius.GetValue() / 2f;
+            rangeSprite.transform.localScale = new Vector3(radius, radius, radius);
+            rangeSprite.SetActive(false);
         }
 
-        public void CastAoEBasicAttack()
+        private void Update()
         {
             if (Time.time < _nextAttackTime) return;
-            _nextAttackTime = Time.time + attackCooldown;
 
+            AutoAttackScanner();
+        }
+
+        private void AutoAttackScanner()
+        {
             int numHits = Physics.OverlapSphereNonAlloc(transform.position, _playerStats.AttackRadius.GetValue(), _hitColliders, enemyLayer);
+
+            if (numHits > 0)
+            {
+                rangeSprite.SetActive(true);
+                CastAoEBasicAttack(numHits);
+
+                float currentAttackSpeed = _playerStats.AttackSpeed.GetValue();
+            
+                if (currentAttackSpeed <= 0.1f) currentAttackSpeed = 0.1f; 
+            
+                float cooldown = 1f / currentAttackSpeed;
+                _nextAttackTime = Time.time + cooldown;
+            }
+            else
+            {
+                rangeSprite.SetActive(false);
+            }
+        }
+
+        private void CastAoEBasicAttack(int numHits)
+        {
+            _player.Animator.SetTrigger(AnimHashes.AttackTrigger);
 
             for (int i = 0; i < numHits; i++)
             {
@@ -68,7 +102,7 @@ namespace Player.Components
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 5);
+            Gizmos.DrawWireSphere(transform.position, 3);
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Player.Components
         private void Start()
         {
             _healthSystem.Initialize(maxHealth.GetValue());
+            Debug.Log(maxHealth.GetValue());
         }
 
         public void UpgradeStat(StatType statType, float amount)

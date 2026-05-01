@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49d1e2e88b7f614dae43a65580811fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UpgradeButtonUI
-  myStatType: 0
+  myStatType: 2
   upgradeManager: {fileID: 855400933}
   costText: {fileID: 854880388}
 --- !u!1 &334775087
@@ -2549,25 +2549,25 @@ MonoBehaviour:
   playerStats: {fileID: 1619246619}
   _upgradeConfigs:
   - StatType: 1
-    BaseCost: 0
-    CostIncrement: 0
-    UpgradeAmount: 0
-    MaxLevel: 0
+    BaseCost: 10
+    CostIncrement: 10
+    UpgradeAmount: 10
+    MaxLevel: 100
   - StatType: 0
-    BaseCost: 0
-    CostIncrement: 0
-    UpgradeAmount: 0
-    MaxLevel: 0
+    BaseCost: 10
+    CostIncrement: 10
+    UpgradeAmount: 10
+    MaxLevel: 100
   - StatType: 2
-    BaseCost: 0
-    CostIncrement: 0
-    UpgradeAmount: 0
-    MaxLevel: 0
+    BaseCost: 10
+    CostIncrement: 10
+    UpgradeAmount: 10
+    MaxLevel: 100
   - StatType: 3
-    BaseCost: 0
-    CostIncrement: 0
-    UpgradeAmount: 0
-    MaxLevel: 0
+    BaseCost: 10
+    CostIncrement: 10
+    UpgradeAmount: 10
+    MaxLevel: 100
 --- !u!4 &855400934
 Transform:
   m_ObjectHideFlags: 0
@@ -2717,7 +2717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49d1e2e88b7f614dae43a65580811fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UpgradeButtonUI
-  myStatType: 0
+  myStatType: 1
   upgradeManager: {fileID: 855400933}
   costText: {fileID: 1322804322}
 --- !u!1 &931033437
@@ -2881,7 +2881,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 945913836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2082498940}
+        m_TargetAssemblyTypeName: UI.UpgradeUIPopup, Assembly-CSharp
+        m_MethodName: CloseCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &945913836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3222,40 +3234,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2354848590660293887, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      propertyPath: spellPrefab
-      value: 
-      objectReference: {fileID: -3417740130135299108, guid: 95a39d708d56ff746833906d6e365507, type: 3}
-    - target: {fileID: 2354848590660293887, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      propertyPath: vfxSpawnHeight
-      value: 0.05
+    - target: {fileID: 6378486415427517288, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
       objectReference: {fileID: 0}
-    - target: {fileID: 2354848590660293887, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      propertyPath: enemyLayer.m_Bits
-      value: 64
+    - target: {fileID: 6378486415427517288, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7764222781843089532, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.49999994
+    - target: {fileID: 6378486415427517288, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7764222781843089532, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.86602545
-      objectReference: {fileID: 0}
-    - target: {fileID: 7764222781843089532, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 120
+    - target: {fileID: 6378486415427517288, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1481115838759010760, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1619246619}
-    - targetCorrespondingSourceObject: {fileID: 1481115838759010760, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1619246620}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
 --- !u!1001 &1274502401
 PrefabInstance:
@@ -4223,60 +4221,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49d1e2e88b7f614dae43a65580811fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UpgradeButtonUI
-  myStatType: 0
+  myStatType: 3
   upgradeManager: {fileID: 855400933}
   costText: {fileID: 734667660}
---- !u!1 &1619246609 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1481115838759010760, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
-  m_PrefabInstance: {fileID: 1253673595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1619246610 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2094627737734753718, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
   m_PrefabInstance: {fileID: 1253673595}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619246609}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c9fa2611554c794fb466617c61f152b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Systems.Combat.HealthSystem
---- !u!114 &1619246619
+--- !u!114 &1619246619 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2743143991228412903, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
+  m_PrefabInstance: {fileID: 1253673595}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619246609}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b11a3ff1a1244940bf851a58f37b208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Components.PlayerStats
-  maxHealth:
-    BaseValue: 100
-  damage:
-    BaseValue: 50
-  attackSpeed:
-    BaseValue: 1
-  moveSpeed:
-    BaseValue: 3
-  attackRadius:
-    BaseValue: 5
---- !u!114 &1619246620
+--- !u!114 &1619246620 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 9210719035678908126, guid: 979acea16f97de141878f1d46b7bd046, type: 3}
+  m_PrefabInstance: {fileID: 1253673595}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619246609}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfea37cd7d079804ebc87a59e70cdf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Components.PlayerWallet
-  currentGold: 0
 --- !u!1001 &1638157248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5502,7 +5482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2082498937
 RectTransform:
   m_ObjectHideFlags: 0

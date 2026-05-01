@@ -20,14 +20,9 @@ namespace UI
             playerHealth.OnHealthChanged -= UpdateHealthBar;
         }
 
-        private void Start()
+        private void UpdateHealthBar(float currentHealth)
         {
-            healthText.text = ((int)playerHealth.MaxHealth).ToString();
-        }
-
-        private void UpdateHealthBar(float healthPercentage)
-        {
-            healthText.text = ((int)playerHealth.MaxHealth).ToString();
+            healthText.text = ((int)currentHealth).ToString();
         }
     }
 }

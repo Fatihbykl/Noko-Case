@@ -21,3 +21,4 @@ MonoBehaviour:
   attackRange: 1
   damage: 2
   navMeshRecalculateDelay: 0.2
+  goldReward: 500

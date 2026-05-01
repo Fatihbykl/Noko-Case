@@ -12,12 +12,12 @@ namespace Systems.Combat
         private float _currentHealth;
         private float _maxHealth;
         
-        public float MaxHealth => _maxHealth;
-
         public void Initialize(float maxHealth)
         {
             _maxHealth = maxHealth;
             _currentHealth = maxHealth;
+            
+            OnHealthChanged?.Invoke(_currentHealth);
         }
 
         public void TakeDamage(float amount, Transform attacker)
@@ -26,7 +26,7 @@ namespace Systems.Combat
 
             _currentHealth -= amount;
         
-            OnHealthChanged?.Invoke(_currentHealth / _maxHealth);
+            OnHealthChanged?.Invoke(_currentHealth);
 
             if (attacker != null)
             {
@@ -43,7 +43,7 @@ namespace Systems.Combat
         public void Heal(float amount)
         {
             _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
-            OnHealthChanged?.Invoke(_currentHealth / _maxHealth);
+            OnHealthChanged?.Invoke(_currentHealth);
         }
     }
 }
