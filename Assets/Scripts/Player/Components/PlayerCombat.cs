@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using VFX;
 
-namespace Player
+namespace Player.Components
 {
     public class PlayerCombat : MonoBehaviour
     {
@@ -48,7 +48,7 @@ namespace Player
         {
             Collider enemyCollider = _hitColliders[i];
             
-            if (enemyCollider.TryGetComponent(out EnemyController enemy))
+            if (enemyCollider.TryGetComponent(out IDamageable enemy))
             {
                 enemy.TakeDamage(_damage, transform);
             }

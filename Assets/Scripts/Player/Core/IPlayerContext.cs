@@ -1,4 +1,5 @@
 using Player;
+using Player.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
