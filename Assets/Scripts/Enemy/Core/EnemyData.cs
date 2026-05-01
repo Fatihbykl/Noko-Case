@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Data
+namespace Enemy.Core
 {
     [CreateAssetMenu(fileName = "EnemyData", menuName = "Enemy/EnemyData")]
     public class EnemyData : ScriptableObject
@@ -14,5 +14,6 @@ namespace Data
         public float attackRange;
         public float damage;
         public float navMeshRecalculateDelay;
+        public int goldReward;
     }
 }

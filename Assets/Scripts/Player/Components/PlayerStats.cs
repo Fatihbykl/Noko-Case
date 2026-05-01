@@ -12,11 +12,13 @@ namespace Player.Components
         [SerializeField] private CharacterStat damage;
         [SerializeField] private CharacterStat attackSpeed;
         [SerializeField] private CharacterStat moveSpeed;
+        [SerializeField] private CharacterStat attackRadius;
 
         public CharacterStat MaxHealth => maxHealth;
         public CharacterStat Damage => damage;
         public CharacterStat AttackSpeed => attackSpeed;
         public CharacterStat MoveSpeed => moveSpeed;
+        public CharacterStat AttackRadius => attackRadius;
 
         private HealthSystem _healthSystem;
     

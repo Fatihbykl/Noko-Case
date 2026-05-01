@@ -1,6 +1,6 @@
 using System;
-using Data;
 using FSM;
+using Player.Components;
 using Systems.Combat;
 using UnityEngine;
 using UnityEngine.AI;
@@ -52,6 +52,10 @@ namespace Enemy.Core
             if (StateMachine.CurrentState is not EnemyDeadState)
             {
                 StateMachine.ChangeState(new EnemyDeadState(this));
+                if (PlayerTarget != null && PlayerTarget.TryGetComponent(out PlayerWallet wallet))
+                {
+                    wallet.AddGold(stats.goldReward);
+                }
             }
         }
 

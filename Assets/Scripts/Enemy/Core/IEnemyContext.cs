@@ -1,4 +1,4 @@
-using Data;
+using Enemy.Core;
 using FSM;
 using UnityEngine;
 using UnityEngine.AI;
