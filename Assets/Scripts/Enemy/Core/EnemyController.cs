@@ -73,6 +73,20 @@ namespace Enemy.Core
                 StateMachine.ChangeState(new EnemyChaseState(this));
             }
         }
+        
+        public void ResetEnemy()
+        {
+            Health.Initialize(stats.maxHealth);
+
+            if (TryGetComponent(out NavMeshAgent agent))
+            {
+                agent.ResetPath();
+                agent.velocity = Vector3.zero;
+            }
+
+            StateMachine.ChangeState(new EnemyPatrolState(this));
+            PlayerTarget = null;
+        }
 
         public void SetTarget(Transform target) => PlayerTarget = target;
     }
