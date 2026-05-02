@@ -1,4 +1,5 @@
 using System;
+using Enemy.States;
 using FSM;
 using Player.Components;
 using Systems.Combat;
@@ -19,6 +20,8 @@ namespace Enemy.Core
         [SerializeField] private EnemyData stats;
         public EnemyData Stats => stats;
         
+        public event Action<EnemyController> OnDespawnRequest;
+        
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
@@ -31,6 +34,11 @@ namespace Enemy.Core
         {
             Health.Initialize(stats.maxHealth);
             StateMachine.ChangeState(new EnemyPatrolState(this));
+        }
+        
+        public void Despawn()
+        {
+            OnDespawnRequest?.Invoke(this);
         }
 
         private void OnEnable()
@@ -76,13 +84,10 @@ namespace Enemy.Core
         
         public void ResetEnemy()
         {
-            Health.Initialize(stats.maxHealth);
+            Health.Initialize(Stats.maxHealth);
 
-            if (TryGetComponent(out NavMeshAgent agent))
-            {
-                agent.ResetPath();
-                agent.velocity = Vector3.zero;
-            }
+            if (TryGetComponent(out Collider col)) col.enabled = true;
+            if (TryGetComponent(out NavMeshAgent agent)) agent.enabled = true;
 
             StateMachine.ChangeState(new EnemyPatrolState(this));
             PlayerTarget = null;

@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1617399745748130172, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -527,7 +531,20 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8374823056742503029}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6832971805839411382}
   m_SourcePrefab: {fileID: 100100000, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
+--- !u!137 &3481757067016618737 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -9111983672946315051, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
+  m_PrefabInstance: {fileID: 3592206444081672740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3913819150654772687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
+  m_PrefabInstance: {fileID: 3592206444081672740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4403250960933474165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ff54d4bf1cbe20f48b48ac6fccd17ba6, type: 3}
@@ -652,3 +669,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9fa2611554c794fb466617c61f152b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Systems.Combat.HealthSystem
+--- !u!114 &6832971805839411382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403250960933474165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b30f8759a4bbf47940385ec6bc86a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy.Component.EnemyDamageFeedback
+  _meshRenderer: {fileID: 3481757067016618737}
+  _flashMaterial: {fileID: 2100000, guid: 8141fa79af5a59541abccdc21f706388, type: 2}
+  _flashDuration: 0.1
+  _hitVfxPrefab: {fileID: 1554909227882074874, guid: bc56ce7f71bbee74f84b56c4bd61da3f, type: 3}
+  _vfxSpawnPoint: {fileID: 3913819150654772687}

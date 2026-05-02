@@ -199,7 +199,7 @@ PrefabInstance:
       addedObject: {fileID: 2354848590660293887}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09aa4125e96b2724fba723d263310805, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 17698561640198426}
+      addedObject: {fileID: 7850239942553685350}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09aa4125e96b2724fba723d263310805, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2094627737734753718}
@@ -348,7 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebba7943ab156b7469cc84abc9bcf04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerMovement
-  _speed: 5
 --- !u!114 &2354848590660293887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +366,7 @@ MonoBehaviour:
   rangeSprite: {fileID: 4466999305307226592}
   spellPrefab: {fileID: -3417740130135299108, guid: 95a39d708d56ff746833906d6e365507, type: 3}
   vfxSpawnHeight: 0.05
---- !u!114 &17698561640198426
+--- !u!114 &7850239942553685350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,11 +375,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1481115838759010760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7203163ac050ae1448aa48c681c3eb3c, type: 3}
+  m_Script: {fileID: 11500000, guid: c394f5065c01e96429ad411e23edfe1b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputProvider
-  _moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _attackAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::MobilePlayerInput
+  _joystick: {fileID: 0}
 --- !u!114 &2094627737734753718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,11 +406,11 @@ MonoBehaviour:
   maxHealth:
     BaseValue: 100
   damage:
-    BaseValue: 50
+    BaseValue: 10
   attackSpeed:
-    BaseValue: 0.1
+    BaseValue: 1
   moveSpeed:
-    BaseValue: 3
+    BaseValue: 5
   attackRadius:
     BaseValue: 3
 --- !u!114 &9210719035678908126
@@ -457,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Systems.Skill.MeteorStrikeSkill
   SkillName: Meteor
-  Cooldown: 7
+  Cooldown: 8
   IsPassive: 0
   Damage: 50
   ExplosionRadius: 3
@@ -498,9 +496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Systems.Skill.BuffSkill
   SkillName: Buff
-  Cooldown: 5
+  Cooldown: 15
   IsPassive: 0
-  BuffDuration: 5
+  BuffDuration: 4
   BonusDamage: 20
   BonusAttackSpeed: 1
   GlowVFX: {fileID: 5729659982900223628}

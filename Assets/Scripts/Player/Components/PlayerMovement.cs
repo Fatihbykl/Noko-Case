@@ -1,3 +1,4 @@
+using Player.Components;
 using UnityEngine;
 
 namespace Player
@@ -5,11 +6,12 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         private CharacterController _controller;
-        [SerializeField] private float _speed = 5f;
+        private PlayerStats _playerStats;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _playerStats = GetComponent<PlayerStats>();
         }
 
         public void Move(Vector2 input)
@@ -17,7 +19,7 @@ namespace Player
             if (input.sqrMagnitude < 0.01f) return;
 
             Vector3 moveDirection = new Vector3(input.x, 0f, input.y).normalized;
-            _controller.Move(moveDirection * (_speed * Time.deltaTime));
+            _controller.Move(moveDirection * (_playerStats.MoveSpeed.GetValue() * Time.deltaTime));
         
             transform.forward = moveDirection; 
         }

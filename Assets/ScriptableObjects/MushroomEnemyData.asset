@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: MushroomEnemyData
   m_EditorClassIdentifier: Assembly-CSharp::Data.EnemyData
   canAttack: 0
-  maxHealth: 1000000
-  chaseSpeed: 2
-  fleeSpeed: 2
-  patrolSpeed: 1
+  maxHealth: 50
+  chaseSpeed: 3.5
+  fleeSpeed: 3.5
+  patrolSpeed: 3
   patrolRadius: 4
   attackRange: 1
-  damage: 2
+  damage: 10
   navMeshRecalculateDelay: 0.2
-  goldReward: 500
+  goldReward: 5

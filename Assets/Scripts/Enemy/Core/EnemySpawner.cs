@@ -55,7 +55,7 @@ namespace Enemy.Core
         {
             EnemyController enemy = Instantiate(_enemyPrefab, transform);
         
-            enemy.Health.OnDied += () => ReturnEnemyToPool(enemy);
+            enemy.OnDespawnRequest += ReturnEnemyToPool;
         
             return enemy;
         }

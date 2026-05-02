@@ -62,8 +62,8 @@ namespace Player.Components
                 CastAoEBasicAttack(numHits);
 
                 float currentAttackSpeed = _playerStats.AttackSpeed.GetValue();
-            
-                if (currentAttackSpeed <= 0.1f) currentAttackSpeed = 0.1f; 
+                Debug.Log("current attack speed - " + currentAttackSpeed);
+                if (currentAttackSpeed <= 0.1f) currentAttackSpeed = 0.1f;
             
                 float cooldown = 1f / currentAttackSpeed;
                 _nextAttackTime = Time.time + cooldown;

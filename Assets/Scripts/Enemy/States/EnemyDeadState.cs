@@ -1,12 +1,36 @@
+using Enemy.Core;
 using UnityEngine;
 
-public class EnemyDeadState : EnemyBaseState
+namespace Enemy.States
 {
-    public EnemyDeadState(IEnemyContext ctx) : base(ctx) { }
-    
-    public override void Enter()
+    public class EnemyDeadState : EnemyBaseState
     {
-        Ctx.Animator.SetTrigger(AnimHashes.DeadTrigger);
-        Debug.Log("Enemy is Dead");
+        public EnemyDeadState(IEnemyContext ctx) : base(ctx) { }
+    
+        private EnemyController _controller;
+        private float _despawnTimer;
+        private float _timeToDespawn = 2f;
+
+        public override void Enter()
+        {
+            _controller = Ctx.Transform.GetComponent<EnemyController>();
+            _despawnTimer = 0f;
+
+            Ctx.Animator.SetTrigger(AnimHashes.DeadTrigger);
+
+            if (_controller.TryGetComponent(out Collider col)) col.enabled = false;
+            if (_controller.TryGetComponent(out UnityEngine.AI.NavMeshAgent agent)) agent.enabled = false;
+        }
+
+        public override void Tick()
+        {
+            _despawnTimer += Time.deltaTime;
+
+            if (_despawnTimer >= _timeToDespawn)
+            {
+                _controller.Despawn();
+                Debug.Log("Despawn");
+            }
+        }
     }
 }
