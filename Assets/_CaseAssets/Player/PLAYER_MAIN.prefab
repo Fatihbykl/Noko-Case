@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 18beafb0b13b1f945a4aa3bad57ae200, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -203,6 +203,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09aa4125e96b2724fba723d263310805, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9210719035678908126}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09aa4125e96b2724fba723d263310805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7849782738252337894}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09aa4125e96b2724fba723d263310805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7817119627200185953}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09aa4125e96b2724fba723d263310805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4513448577736821121}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09aa4125e96b2724fba723d263310805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4670716532407587525}
   m_SourcePrefab: {fileID: 100100000, guid: 09aa4125e96b2724fba723d263310805, type: 3}
 --- !u!1 &1481115838759010760 stripped
 GameObject:
@@ -410,6 +422,78 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Components.PlayerWallet
   currentGold: 0
+--- !u!114 &7849782738252337894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481115838759010760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a1d0d70cdc38f408b39b420fb42314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Systems.Skill.PlayerSkillManager
+--- !u!114 &7817119627200185953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481115838759010760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f519d31c072630648a1ccb2382595cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Systems.Skill.MeteorStrikeSkill
+  SkillName: Meteor
+  Cooldown: 7
+  IsPassive: 0
+  Damage: 50
+  ExplosionRadius: 3
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  MeteorVFX: {fileID: 0}
+--- !u!114 &4513448577736821121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481115838759010760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe393f1634b76d4d83ba0840f7e335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Systems.Skill.FrostAuraSkill
+  SkillName: Frost
+  Cooldown: 0
+  IsPassive: 1
+  AuraRadius: 1
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  AuraVFX: {fileID: 0}
+--- !u!114 &4670716532407587525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481115838759010760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6485c322f82be25409c5d6d5e18ee821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Systems.Skill.BuffSkill
+  SkillName: Buff
+  Cooldown: 5
+  IsPassive: 0
+  BuffDuration: 5
+  BonusDamage: 20
+  BonusAttackSpeed: 1
+  GlowVFX: {fileID: 0}
 --- !u!4 &2289565489218706290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 09aa4125e96b2724fba723d263310805, type: 3}
