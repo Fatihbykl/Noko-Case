@@ -18,3 +18,4 @@ Buglar:
 Eksikler:
 - Sadece bir düşmanı ekleyebildim diğerlerine vaktim kalmadı. Mushroom şu anda hasar alınca kaçmaya başlıyor. Stat'ındaki bir ayarla hasar alınca saldıracak şekilde düzenlenebiliyor.
 - Düşmanlara can barı ve floating text
+- Unity'nin default haptic biraz fazla titreştiriyor.
