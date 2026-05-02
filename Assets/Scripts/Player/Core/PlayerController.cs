@@ -18,6 +18,9 @@ namespace Player.Core
 
         private void Awake()
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
+            
             Movement = GetComponent<PlayerMovement>();
             Combat = GetComponent<PlayerCombat>();
             Input = GetComponent<IInputProvider>();

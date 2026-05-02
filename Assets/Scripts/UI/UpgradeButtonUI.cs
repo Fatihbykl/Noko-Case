@@ -13,6 +13,7 @@ namespace UI
         [Header("References")]
         [SerializeField] private StatUpgradeManager upgradeManager;
         [SerializeField] private TextMeshProUGUI costText;
+        [SerializeField] private TextMeshProUGUI currentStatText;
     
         private Button _button;
 
@@ -37,6 +38,7 @@ namespace UI
         public void RefreshCostText()
         {
             int currentCost = upgradeManager.GetCurrentCost(myStatType);
+            int currentStat = upgradeManager.GetCurrentStat(myStatType);
         
             if (currentCost == -1)
             {
@@ -47,6 +49,8 @@ namespace UI
             {
                 costText.text = currentCost.ToString() + " G";
             }
+            
+            currentStatText.text = currentStat.ToString();
         }
     }
 }

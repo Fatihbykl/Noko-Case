@@ -1207,6 +1207,7 @@ MonoBehaviour:
   myStatType: 2
   upgradeManager: {fileID: 855400933}
   costText: {fileID: 854880388}
+  currentStatText: {fileID: 661305640}
 --- !u!1 &288946006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1665,7 @@ MonoBehaviour:
   myStatType: 0
   upgradeManager: {fileID: 855400933}
   costText: {fileID: 1781269651}
+  currentStatText: {fileID: 1543360031}
 --- !u!1 &470727400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3895853692756844425, guid: bf36138654d26ee4f930cd4bef333ce4, type: 3}
@@ -3457,6 +3459,7 @@ MonoBehaviour:
   myStatType: 1
   upgradeManager: {fileID: 855400933}
   costText: {fileID: 1322804322}
+  currentStatText: {fileID: 1840798936}
 --- !u!1 &931033437
 GameObject:
   m_ObjectHideFlags: 0
@@ -5499,6 +5502,7 @@ MonoBehaviour:
   myStatType: 3
   upgradeManager: {fileID: 855400933}
   costText: {fileID: 734667660}
+  currentStatText: {fileID: 526888877}
 --- !u!114 &1619246610 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2094627737734753718, guid: 979acea16f97de141878f1d46b7bd046, type: 3}

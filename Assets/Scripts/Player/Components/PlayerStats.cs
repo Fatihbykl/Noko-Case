@@ -61,5 +61,15 @@ namespace Player.Components
                 Debug.LogWarning($"Stat tipi bulunamadı: {statType}");
             }
         }
+        
+        public float GetStatValue(StatType type)
+        {
+            if (_statDictionary.TryGetValue(type, out CharacterStat stat))
+            {
+                return stat.GetValue();
+            }
+            Debug.LogWarning($"Stat bulunamadı: {type}");
+            return 0f;
+        }
     }
 }

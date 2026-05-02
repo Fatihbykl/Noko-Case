@@ -14,6 +14,12 @@ namespace Enemy.Component
 
         [Header("VFX Settings")] [SerializeField]
         private GameObject _hitVfxPrefab;
+        
+        [Header("Haptic Settings")]
+        [SerializeField] private bool _useHapticFeedback = false;
+        
+        private static float _lastVibrationTime; 
+        private const float VibrationCooldown = 0.2f;
 
         [SerializeField] private Transform _vfxSpawnPoint;
 
@@ -57,6 +63,19 @@ namespace Enemy.Component
                 Vector3 lookDir = attacker != null ? (attacker.position - transform.position).normalized : Vector3.up;
                 Instantiate(_hitVfxPrefab, spawnPos, Quaternion.LookRotation(lookDir));
             }
+            
+            if (_useHapticFeedback && Time.time >= _lastVibrationTime + VibrationCooldown)
+            {
+                TriggerVibration();
+                _lastVibrationTime = Time.time;
+            }
+        }
+        
+        private void TriggerVibration()
+        {
+#if UNITY_ANDROID || UNITY_IOS
+            Handheld.Vibrate();
+#endif
         }
 
         private IEnumerator FlashRoutine()

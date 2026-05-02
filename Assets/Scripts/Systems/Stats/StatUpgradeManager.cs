@@ -16,9 +16,18 @@ namespace Systems.Stats
 
         private Dictionary<StatType, StatUpgradeConfig> _configDict;
         private Dictionary<StatType, int> _statLevels;
+        
+        private bool _isInitialized;
 
         private void Awake()
         {
+            Initialize();
+        }
+        
+        private void Initialize()
+        {
+            if (_isInitialized) return;
+
             _configDict = new Dictionary<StatType, StatUpgradeConfig>();
             _statLevels = new Dictionary<StatType, int>();
 
@@ -29,17 +38,31 @@ namespace Systems.Stats
                     _statLevels.Add(config.StatType, 0);
                 }
             }
+        
+            _isInitialized = true;
         }
 
         public int GetCurrentCost(StatType type)
         {
+            Initialize(); // script execution order ile ilgili textler initialize olmadığı için geçici çözüm
+            
             if (_configDict.TryGetValue(type, out var config) && _statLevels.TryGetValue(type, out int currentLevel))
             {
-                // Formül: Taban Fiyat + (Mevcut Seviye * Artış Miktarı)
-                // Örn: 50 + (0 * 25) = 50. Sonraki: 50 + (1 * 25) = 75 vb.
                 return config.BaseCost + (currentLevel * config.CostIncrement);
             }
             return -1;
+        }
+
+        public int GetCurrentStat(StatType type)
+        {
+            Initialize(); // script execution order ile ilgili textler initialize olmadığı için geçici çözüm
+            
+            if (playerStats != null)
+            {
+                return (int)playerStats.GetStatValue(type);
+            }
+    
+            return 0;
         }
 
         public void BuyUpgrade(StatType type)
