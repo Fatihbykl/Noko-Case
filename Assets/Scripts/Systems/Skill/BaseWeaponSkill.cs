@@ -12,9 +12,9 @@ namespace Systems.Skill
 
         public abstract void ExecuteSkill();
 
-        public virtual void Tick()
+        public virtual void Tick(bool hasEnemyInRange)
         {
-            if (Time.time >= NextCastTime)
+            if (Time.time >= NextCastTime && hasEnemyInRange)
             {
                 ExecuteSkill();
                 NextCastTime = Time.time + Cooldown;
