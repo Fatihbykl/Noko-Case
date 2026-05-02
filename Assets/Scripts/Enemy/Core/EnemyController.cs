@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Enemy.States;
 using FSM;
 using Player.Components;
@@ -22,6 +23,9 @@ namespace Enemy.Core
         
         public event Action<EnemyController> OnDespawnRequest;
         
+        private float _baseSpeed;
+        private Coroutine _slowCoroutine;
+        
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
@@ -34,6 +38,9 @@ namespace Enemy.Core
         {
             Health.Initialize(stats.maxHealth);
             StateMachine.ChangeState(new EnemyPatrolState(this));
+            
+            _baseSpeed = stats.chaseSpeed;
+            Agent.speed = _baseSpeed;
         }
         
         public void Despawn()
@@ -82,6 +89,25 @@ namespace Enemy.Core
             }
         }
         
+        public void ApplySlow(float slowPercentage, float duration)
+        {
+            if (_slowCoroutine != null) 
+            {
+                StopCoroutine(_slowCoroutine);
+            }
+        
+            _slowCoroutine = StartCoroutine(SlowRoutine(slowPercentage, duration));
+        }
+
+        private IEnumerator SlowRoutine(float slowPercentage, float duration)
+        {
+            Agent.speed = _baseSpeed * (1f - slowPercentage);
+            
+            yield return new WaitForSeconds(duration);
+
+            Agent.speed = _baseSpeed;
+        }
+        
         public void ResetEnemy()
         {
             Health.Initialize(Stats.maxHealth);
@@ -91,6 +117,9 @@ namespace Enemy.Core
 
             StateMachine.ChangeState(new EnemyPatrolState(this));
             PlayerTarget = null;
+            
+            if (Agent != null) Agent.speed = _baseSpeed;
+            if (_slowCoroutine != null) StopCoroutine(_slowCoroutine);
         }
 
         public void SetTarget(Transform target) => PlayerTarget = target;

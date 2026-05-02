@@ -32,7 +32,7 @@ namespace Systems.Skill
             {
                 if (enemy.TryGetComponent(out EnemyController controller))
                 {
-                    // Düşmanı yavaşlat
+                    controller.ApplySlow(0.50f, 0.6f);
                 }
             }
         }
